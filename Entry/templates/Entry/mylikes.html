@@ -1,0 +1,113 @@
+
+{% extends 'Entry/base.html' %}
+{% load login_extras %}
+{% load staticfiles %}
+
+<!-- {% block title %}Entry Index{% endblock %} -->
+
+{% block body %}
+
+
+
+      <div class="col-sm-12">
+                <!-- <div class="panel panel-default">
+                    <div class="panel-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Style</th>
+                                    <th>Author</th>
+                                    <th>Details</th>
+                                    <th>Genres</th>
+                                    <th>Release Date and Time<th>
+                                    
+                                    
+                                
+                                </tr>
+                            </thead>
+                            <tbody> -->
+                                {% for entry in entry_list %}
+                                    {% if request.user|has_liked:entry %}
+
+
+                                        <div class="col-sm-4 col-lg-2">
+                                            <div class="thumbnail">
+                                                <a href="{% url 'Entry:detail' entry.id %}">
+                                                    <img src="{% static 'Entry/images/default.jpg' %}" class="img-responsive" alt="Test">
+                                                </a>
+                                                <div class="caption">
+                                                    <h4><b>{{ entry.entry_name }}</b>
+                                                        <span style="float:right;">
+                                                            <!-- <a  href="{% url 'Entry:entry-update' entry.id %}">
+                                                                <button type="button" class="btn btn-success btn-xs">
+                                                                    <span class="glyphicon glyphicon-edit"></span>&nbsp; Update
+                                                                </button>
+                                                            </a>
+
+                                                            <a  href="{% url 'Entry:entry-delete' entry.id %}">
+                                                                <button type="button" class="btn btn-success btn-xs">
+                                                                    <span class="glyphicon glyphicon-trash"></span>&nbsp; Delete
+                                                                </button>
+                                                            </a>
+ -->
+                                                         </span>
+
+                                                    </h4>
+                                                    <!-- <h4>{{ entry.entry_writer_id.username }}</h4> -->
+
+                                                    <!-- View Details -->
+                                                    
+                                                    <a href="{% url 'Entry:detail' entry.id %}" class="btn btn-primary btn-sm" role="button">View Details</a>
+
+                                                    <!-- Delete Album -->
+                                                    <form action="{% url 'Entry:bookmark' entry.id %}" method="post" style="display: inline;">
+                                                        {% csrf_token %}
+                                                        <input type="hidden" name="entry_id" value="{{ entry.id }}" />
+                                                        <button type="submit" class="btn btn-default btn-sm">
+                                                            <span class="glyphicon glyphicon-bookmark"></span>
+                                                        </button>
+                                                    </form>
+                                                    
+
+                                                    <!-- Favorite Album -->
+                                                    <!-- <a href="{% url 'Entry:like' entry.id %}" class="btn btn-default btn-sm btn-favorite" role="button">
+                                                        <span class="glyphicon glyphicon-thumbs-up "></span>
+                                                    </a> -->
+                                                    <b> Style : {{entry.entry_style}}</b>
+                                                    <span style="float:right;"><a href="{% url 'Entry:userdetail' entry.entry_writer_id.id %}" class="btn btn-primary btn-sm" role="button">Author : {{ entry.entry_writer_id.username }}</a> </span>
+                                                
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <tr>
+                                            <td>{{ entry.entry_name }}</td>
+                                            <td>{{entry.entry_style}}</td>
+                                            <td>{{ entry.entry_writer_id.username }}</td>
+                                            
+                                            <td>
+                                                <a  href="{% url 'Entry:detail' entry.id %}">
+                                                    <button type="button" class="btn btn-success btn-xs">
+                                                        <span class="glyphicon glyphicon-zoom-in"></span>&nbsp; View
+                                                    </button>
+                                                </a>
+                                            </td>
+                                            <td>{{ entry.entry_genres.all }}</td>
+
+                                            <td>{{entry.entry_release_date}}</td>
+                                    
+                                      
+                                        </tr> -->
+                                    {% endif %}
+                                    
+                                {% endfor %}
+                            <!-- </tbody>
+                        </table>
+                    </div>
+                </div> -->
+            
+       </div>
+    
+
+{% endblock %}
+

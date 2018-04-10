@@ -1,0 +1,55 @@
+
+{% extends 'Entry/base.html' %}
+{% load login_extras %}
+
+
+<!-- {% block title %}Entry Index{% endblock %} -->
+
+{% block body %}
+
+
+
+      <div class="col-sm-12">
+	                <div class="panel panel-default">
+	                    <div class="panel-body">
+	                        <table class="table">
+	                            <thead>
+	                                <tr>
+	                                    <th>Followed by:</th>
+	                                    
+	                                    
+	                                
+	                                </tr>
+	                            </thead>
+	                            <tbody>
+	                                {% for followedby in followedby_list %}
+
+	                                    <tr>
+
+	                                        <td>
+	                                        	<a href="{% url 'Entry:userdetail' followedby.follower.id %}">
+	                                        		<button type="button" class="btn btn-success btn-xs">
+	                                                    <span class="glyphicon glyphicon-user"></span>&nbsp; 
+	                                                    {{ followedby.follower.username }}
+	                                                </button>
+	                                            </a>
+
+	                                        	
+	                                        </td>
+
+	                                        	                                 
+	                                      
+	                                    </tr>
+	                                {% endfor %}
+	                            </tbody>
+	                        </table>
+	                    </div>
+	                </div>
+
+
+            
+       </div>
+    
+
+{% endblock %}
+

@@ -1,0 +1,28 @@
+
+<html>
+<head>
+    <title>Login and Registartion Form Design</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'Entry/login_style.css' %}" >
+</head>
+<body>
+    <div class="login-page">
+        <div class = "form">
+
+            <form class ="login-form" action="" method="post">
+                {% csrf_token %}
+                {% include 'Entry/form-template.html' %}
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success">Submit </button>
+                    </div>
+                </div>
+                <p class ="message">Already Registered?<a href="/entry/login">Login</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,52 @@
+{% extends 'Entry/base.html' %}
+
+{% block title %}Entry Details {% endblock %}
+
+
+{% block body %}
+
+<!-- <div class="col-sm-4 col-lg-2">
+<div class="thumbnail"> -->
+	<div class = "TitleFont">
+		<h2><b><u><center> {{entry.entry_name}}</center></u></b></h2>
+	</div>
+	<div class = "EntryFont">
+		<h3><center>{{entry.entry_description}}</center></h3>
+	</div>
+	
+	<br>
+	<br>
+
+<!-- </div>
+</div> -->
+
+<!-- <div class="col-sm-4 col-lg-2">
+<div class="thumbnail"> -->
+	<div class = "FooterFont">
+	<h4><b>Style</b> : {{entry.entry_style}}</h4>
+
+	<h4><b>Publish date</b> : {{entry.entry_release_date}}</h4>
+	<h4><b>Genres</b> :{{entry.entry_genres.all}}</h4>
+	</div>
+	<br>
+
+	<h5>
+		<center>
+			<span style="margin-right:40px">
+		<a  href="{% url 'Entry:like' entry.id %}">
+	        <button type="button" class="btn btn-success btn-xl">
+	        	<span class="glyphicon glyphicon-heart"></span>&nbsp; Like
+	        </button>
+	    </a>
+	   	</span>
+		<a  href="{% url 'Entry:bookmark' entry.id %}">
+	        <button type="button" class="btn btn-success btn-xl">
+	        	<span class="glyphicon glyphicon-bookmark"></span>&nbsp; Bookmark
+	        </button>
+	    </a>
+	    </center>
+	</h5>
+<!-- </div>
+</div> -->
+
+{% endblock %}
